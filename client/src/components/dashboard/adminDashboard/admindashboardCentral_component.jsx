@@ -139,11 +139,11 @@ class AdminDashboard extends React.Component {
         // chartLabels: this.props.chartLabels,
         // chartDataSet: this.props.chartDataSet,
         chartData: {
-                        labels: this.props.chartLabels ||['jones', 'smith', 'robot'],
+                        labels: this.props.chartLabels ||[],
                         datasets: [
                             {
                                 borderWidth: 1,
-                                data: this.props.chartDataSet || [50,60,80]
+                                data: this.props.chartDataSet || []
                             }
                         ]
                     }

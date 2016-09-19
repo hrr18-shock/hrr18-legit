@@ -107,48 +107,50 @@ export function chooseData(selection){
       })
     } else if (selection === CLASS_AVERAGES){
       console.log('students_scores action creator running')
-      // call to server here
-      var sampleClassScores = {
+      // var sampleClassScores = {
 
-           teachers:[
-             {
-              name: 'dave',
-              students: [
-                  {
-                  first:'hello',
-                  last: 'world',
-                  scores: [15, 60, 100]
-                  },
-                  {
-                  first:'foo',
-                  last: 'bar',
-                  scores: [11, 61, 99]
-                  }
+      //      teachers:[
+      //        {
+      //         name: 'dave',
+      //         students: [
+      //             {
+      //             first:'hello',
+      //             last: 'world',
+      //             scores: [15, 60, 100]
+      //             },
+      //             {
+      //             first:'foo',
+      //             last: 'bar',
+      //             scores: [11, 61, 99]
+      //             }
 
-               ]
+      //          ]
 
-             },
-             {
-              name: 'another person',
-              students: [
-                  {
-                  first:'hello',
-                  last: 'world',
-                  scores: [100, 60, 100]
-                  },
-                  {
-                  first:'foo',
-                  last: 'bar',
-                  scores: [100, 100, 99]
-                  }
+      //        },
+      //        {
+      //         name: 'another person',
+      //         students: [
+      //             {
+      //             first:'hello',
+      //             last: 'world',
+      //             scores: [100, 60, 100]
+      //             },
+      //             {
+      //             first:'foo',
+      //             last: 'bar',
+      //             scores: [100, 100, 99]
+      //             }
 
-               ]
-             }
+      //          ]
+      //        }
 
-           ]
+      //      ]
 
-      }
-      dispatch(displayClassAverages(sampleClassScores))
+      // }
+      axios.get('/teachers/students/scores').then(function(data){
+
+        dispatch(displayClassAverages(data))
+      })
     }
   }
 

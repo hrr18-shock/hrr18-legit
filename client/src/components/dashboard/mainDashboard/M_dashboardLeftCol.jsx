@@ -5,21 +5,28 @@ import React from 'react';
 // Components
 import DashboardLeftColItem from './M_dashboardLeftColItem.jsx';
 
-const DashboardLeftCol = ({classes}) => {
+class DashboardLeftCol extends React.Component {
+    constructor (props) {
+        super(props);
+    }
 
+    render () {
         return (
             <div className="dashboardLeftCol">
                 <ul>
-                    {classes.map((classDetails) =>
-                        <DashboardLeftColItem
-                            key={classDetails.id}
-                            classDetails={classDetails}
-                        />
-                    )}
+                    {this.props.classes.map(function(classDetails) {
+                        return (
+                            <DashboardLeftColItem
+                                key={classDetails.id}
+                                classDetails={classDetails}
+                                selectClass={this.props.selectClass}
+                            />
+                        )
+                    }, this)}
                 </ul>
             </div>
-
         )
-};
+    }
+}
 
 export default DashboardLeftCol;

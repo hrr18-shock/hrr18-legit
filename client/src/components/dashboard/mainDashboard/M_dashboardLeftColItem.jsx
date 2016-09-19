@@ -13,11 +13,15 @@ class DashboardLeftColItem extends React.Component {
     }
 
     getClass(id){
-        //store class id in local storage so that it can be used
-        //in the class dashboard to make api call to get class details
-        localStorage.setItem('classId', id);
-        //redirect user to that particular classes dashboard
-        browserHistory.push('/class');
+        if(localStorage.getItem('classId') == id){
+            //redirect user to that particular classes dashboard
+            browserHistory.push('/class');
+        } else {
+            //store class id in local storage so that it can be used
+            //in the class dashboard to make api call to get class details
+            localStorage.setItem('classId', id);
+            this.props.selectClass();
+        }
     }
 
     render(){

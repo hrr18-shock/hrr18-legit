@@ -10,6 +10,7 @@ import Header from '../../headers/authorized_header.jsx';
 import DashboardSummary from './M_dashboardSummary.jsx';
 import DashboardLeftCol from './M_dashboardLeftCol.jsx';
 import DashboardRightCol from './M_dashboardRightCol.jsx';
+import axios from 'axios'
 
 
 class Dashboard extends React.Component {
@@ -28,6 +29,7 @@ class Dashboard extends React.Component {
             numberStudents: 0,
             daysLeft: 0
         }
+        this.setCurrentClass = this.setCurrentClass.bind(this)
     }
 
      componentWillMount() {
@@ -64,6 +66,17 @@ class Dashboard extends React.Component {
         })
     }
 
+    setCurrentClass () {
+      var that = this;
+      var classId = localStorage.getItem('classId');
+      axios.get('/api/report/classes/' + classId).then(function(classDetails){
+        console.log("CLASS", classDetails);
+        that.setState({
+          students: classDetails.data.students
+        })
+      })
+    }
+
     componentWillUnmount () {
         //kill all server requests if there are
         //any still going once component is being unmounted
@@ -88,7 +101,7 @@ class Dashboard extends React.Component {
                                 <div className="dashboardCols clearfix">
                                     <div>
                                         <h3><a href="/classform"><i className="fa fa-plus" aria-hidden="true"></i></a> Classes </h3>
-                                        <DashboardLeftCol classes={this.state.classes} />
+                                        <DashboardLeftCol classes={this.state.classes} selectClass={this.setCurrentClass} />
                                     </div>
                                     <div>
                                         <h3>Students</h3>

@@ -89,16 +89,19 @@ export function chooseData(selection){
       dispatch(displayTeacherAndStudents(sampleTeacherStudentData))
     } else if (selection === STUDENTS_SCORES){
       console.log('students_scores action creator running')
+      // var sampleStudentScores = {
+      //   students:[
+      //     {first:'dave', last:'wer', scores:[50,60,30]},
+      //     {first:'asd', last:'fds', scores:[30,100,20]},
+      //     {first:'dasde', last:'gert', scores:[43,65,67]},
+      //     {first:'gfds', last:'dfgd', scores:[45,63,56]}
+      //   ]
+      // }
       // call to server here
-      var sampleStudentScores = {
-        students:[
-          {first:'dave', last:'wer', scores:[50,60,30]},
-          {first:'asd', last:'fds', scores:[30,100,20]},
-          {first:'dasde', last:'gert', scores:[43,65,67]},
-          {first:'gfds', last:'dfgd', scores:[45,63,56]}
-        ]
-      }
-      dispatch(displayStudentScores(sampleStudentScores))
+      axios.get('/studentscores').then(function(data){
+        console.log(data)
+        dispatch(displayStudentScores(data))
+      })
     } else if (selection === CLASS_AVERAGES){
       console.log('students_scores action creator running')
       // call to server here

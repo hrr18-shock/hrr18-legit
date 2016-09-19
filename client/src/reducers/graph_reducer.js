@@ -47,8 +47,8 @@ export default function graphReducer(state = {
       console.log('REDUCER change data to STUDENTS_SCORES')
       var students = [];
       var assignmentAverages = [];
-      console.log(action.payload)
-      _.each(action.payload.students, (set) => {
+      console.log(action.payload.data, 'payload sent to reducer')
+      _.each(action.payload.data, (set) => {
         var average = _.reduce(set.scores, (store, next) => {
             return store += next
           }
@@ -56,9 +56,10 @@ export default function graphReducer(state = {
         students.push(set.first)
         assignmentAverages.push(average)
       })
+      console.log(students, assignmentAverages)
       return Object.assign({}, state, {
-        labels: students,
-        data: assignmentAverages,
+        labels: students.slice(0,7),
+        data: assignmentAverages.slice(0,7),
       })
       case CLASS_AVERAGES:
         console.log('REDUCER change data to CLASS_AVERAGES')

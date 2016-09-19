@@ -84,10 +84,17 @@ class AdminDashboard extends React.Component {
                 var numStudents = data.numStudents
                 var numClasses = data.classes
                 var id = localStorage.getItem('userid');
-                console.log(id, numStudents, numClasses)
-                $.get("/api/report/users/4").then(function(data){
-                    console.log(data)
-                }).catch(function(err){console.log(err)})
+                console.log(id, numStudents, numClasses, teachers)
+
+                that.setState({
+                    totalTeachers: teachers.teachersNotAdmin.length,
+                    totalClasses: numClasses.length,
+                    totalStudents: _.reduce(numStudents, (store, next) => store+=next),
+                })
+                // $.get("/api/report/users/4").then(function(data){
+                //     console.log(data)
+                // }).catch(function(err){console.log(err)})
+
                 // $.ajax({
                 //     method: "GET",
                 //     url: `/api/report/users/`,
@@ -132,11 +139,11 @@ class AdminDashboard extends React.Component {
         // chartLabels: this.props.chartLabels,
         // chartDataSet: this.props.chartDataSet,
         chartData: {
-                        labels: this.props.chartLabels ||['jones', 'smith', 'robot'],
+                        labels: this.props.chartLabels ||[],
                         datasets: [
                             {
                                 borderWidth: 1,
-                                data: this.props.chartDataSet || [50,60,80]
+                                data: this.props.chartDataSet || []
                             }
                         ]
                     }
@@ -153,11 +160,12 @@ class AdminDashboard extends React.Component {
                         <main>
                             <div className="dashboardWrapper">
                                 <DashboardSummary
-                                    first={this.state.first}
-                                    last={this.state.last}
+                                    // first={this.state.first}
+                                    // last={this.state.last}
                                     totalTeachers={this.state.totalTeachers}
-                                    numberStudents={this.state.totalStudents}
-                                    daysLeft={this.state.daysLeft}
+                                    totalStudents={this.state.totalStudents}
+                                    totalClasses={this.state.totalClasses}
+                                    // daysLeft={this.state.daysLeft}
                                 />
                                 <div className="dashboardCols clearfix">
                                     <div>

@@ -23,8 +23,8 @@ const DashboardSummary = ({ first, last, totalClasses, totalStudents, totalTeach
                     <h5>Total Number of Students</h5>
                 </div>
                 <div>
-                    <p>{daysLeft}</p>
-                    <h5># of Calendar Days Left</h5>
+                    <p>{totalClasses}</p>
+                    <h5>Total Number of Classes</h5>
                 </div>
             </div>
         </div>

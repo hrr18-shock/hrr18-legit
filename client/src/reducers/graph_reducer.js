@@ -35,7 +35,7 @@ export default function graphReducer(state = {
       var teacherLabels = [];
       var studentData = [];
       console.log(action.payload)
-      _.each(action.payload.teachers, (set) => {
+      _.each(action.payload.data, (set) => {
         teacherLabels.push(set.name)
         studentData.push(set.students.length)
       })
@@ -47,32 +47,41 @@ export default function graphReducer(state = {
       console.log('REDUCER change data to STUDENTS_SCORES')
       var students = [];
       var assignmentAverages = [];
-      console.log(action.payload)
-      _.each(action.payload.students, (set) => {
+      console.log(action.payload.data, 'payload sent to reducer')
+      _.each(action.payload.data, (set) => {
         var average = _.reduce(set.scores, (store, next) => {
             return store += next
           }
         ) / set.scores.length
         students.push(set.first)
+        if(!average){
+          average = 0
+        }
         assignmentAverages.push(average)
       })
+      console.log(students, assignmentAverages)
       return Object.assign({}, state, {
-        labels: students,
-        data: assignmentAverages,
+        labels: students.slice(0,7),
+        data: assignmentAverages.slice(0,7),
       })
       case CLASS_AVERAGES:
         console.log('REDUCER change data to CLASS_AVERAGES')
         var teachers = [];
         var studentAveragesByTeacher = [];
-        console.log(action.payload)
-        _.each(action.payload.teachers, (set) => {
+        console.log(action.payload.data)
+        _.each(action.payload.data, (set) => {
           var classAverageScore = _.reduce(set.students, (store, next) => {
               return store += getAverageScores(next)
             }
           , 0) / set.students.length
           teachers.push(set.name)
+          console.log(classAverageScore)
+          if(!classAverageScore){
+            classAverageScore = 0
+          }
           studentAveragesByTeacher.push(classAverageScore)
         })
+        console.log(studentAveragesByTeacher)
         return Object.assign({}, state, {
           labels: teachers,
           data: studentAveragesByTeacher,

@@ -27,6 +27,7 @@ const DashboardRightCol = (props) => {
       //  scaleShowVerticalLines: false,
       //  scaleGridLineColor: 'black'
     }
+
     var chart;
     if(props.chartOption === "LINE"){
       console.log('change to line chart')

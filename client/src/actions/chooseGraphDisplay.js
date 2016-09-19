@@ -69,24 +69,27 @@ export function chooseData(selection){
         //   .catch(function(response){
         //       dispatch(classAddError(response));
         //   });
-        var sampleTeacherStudentData = {
-          teachers:[
-            {
-              name:'jones',
-              students:['george', 'john', 'jack']
-            },
-             {
-              name:'dave',
-              students:['george', 'john', 'jack','jill']
-            },
-             {
-              name:'robo',
-              students:['george', 'john']
-            },
+        // var sampleTeacherStudentData = {
+        //   teachers:[
+        //     {
+        //       name:'jones',
+        //       students:['george', 'john', 'jack']
+        //     },
+        //      {
+        //       name:'dave',
+        //       students:['george', 'john', 'jack','jill']
+        //     },
+        //      {
+        //       name:'robo',
+        //       students:['george', 'john']
+        //     },
 
-          ]
-        }
-      dispatch(displayTeacherAndStudents(sampleTeacherStudentData))
+        //   ]
+        // }
+        axios.get('/teachers/students/scores').then(function(data){
+
+          dispatch(displayTeacherAndStudents(data))
+        })
     } else if (selection === STUDENTS_SCORES){
       console.log('students_scores action creator running')
       // var sampleStudentScores = {

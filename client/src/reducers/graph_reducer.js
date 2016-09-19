@@ -35,7 +35,7 @@ export default function graphReducer(state = {
       var teacherLabels = [];
       var studentData = [];
       console.log(action.payload)
-      _.each(action.payload.teachers, (set) => {
+      _.each(action.payload.data, (set) => {
         teacherLabels.push(set.name)
         studentData.push(set.students.length)
       })

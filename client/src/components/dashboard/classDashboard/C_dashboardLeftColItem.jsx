@@ -9,7 +9,6 @@ class DashboardLeftColItem extends React.Component {
     this.updateCurrentUser = this.updateCurrentUser.bind(this)
   }
   updateCurrentUser (props) {
-    console.log("STUDENT PROPS", this.props);
     localStorage.setItem('studentId', this.props.data.id);
     localStorage.setItem('studentName', this.props.data.first + " " + this.props.data.last);
     const classid = localStorage.getItem('classId')

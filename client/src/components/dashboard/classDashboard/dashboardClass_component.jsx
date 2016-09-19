@@ -21,18 +21,29 @@ class DashboardClass extends React.Component {
     // set context for methods
     this.componentDidMount = this.componentDidMount.bind(this)
     this.setCurrentStudent = this.setCurrentStudent.bind(this)
+    this.getMaxScore = this.getMaxScore.bind(this)
   }
   // set the state with data for a specific student, this funcion is called downstream in C_dashbaordRightColDetail
   setCurrentStudent (student, classid) {
     const that = this
     const url = `/api/outcome/${student.id}/${classid}`
     const studentScores = axios.get(url).then(function (response) {
+      console.log("CurrentStudent", response)
       that.setState({
         currentstudent: student,
         scores: response.data.assignments
       })
     })
   }
+
+  getMaxScore (assignmentId) {
+    var that = this;
+    axios.get('/api/report/assignments/' + assignmentId).then(function(response){
+      console.log("MAX SCORE", response);
+      //that.setState({maxScore: response.data.details.maxScore});
+    })
+  }
+
  // on page render fetch all class info, query is based on classid store in the localStorage varible, set state using class data
   componentDidMount () {
     const classid = localStorage.getItem('classId')
@@ -56,7 +67,7 @@ class DashboardClass extends React.Component {
         <Header />
         <main>
           <div className='dashboardWrapper'>
-            <DashboardSummary data={this.state} />
+            <DashboardSummary data={this.state} getMaxScore={this.getMaxScore} />
             <div className='dashboardCols'>
               <div>
                 <h3>Students <a href='/studentForm'><i className='fa fa-plus' aria-hidden='true' /></a></h3>

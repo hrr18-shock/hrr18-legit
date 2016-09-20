@@ -89,7 +89,8 @@ class AdminDashboard extends React.Component {
                 that.setState({
                     totalTeachers: teachers.teachersNotAdmin.length,
                     totalClasses: numClasses.length,
-                    totalStudents: _.reduce(numStudents, (store, next) => store+=next),
+                    totalStudents: 10
+                    // _.reduce(numStudents, (store, next) => store+=next),
                 })
                 // $.get("/api/report/users/4").then(function(data){
                 //     console.log(data)

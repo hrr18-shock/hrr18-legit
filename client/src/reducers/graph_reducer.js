@@ -59,10 +59,10 @@ export default function graphReducer(state = {
         }
         assignmentAverages.push(average)
       })
-      console.log(students, assignmentAverages)
+      console.log(students.slice(-10), assignmentAverages)
       return Object.assign({}, state, {
-        labels: students.slice(students.length, -10),
-        data: assignmentAverages.slice(students.length, -10),
+        labels: students.slice(-10),
+        data: assignmentAverages.slice(-10),
       })
       case CLASS_AVERAGES:
         console.log('REDUCER change data to CLASS_AVERAGES')

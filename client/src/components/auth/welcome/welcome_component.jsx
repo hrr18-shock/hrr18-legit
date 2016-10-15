@@ -30,7 +30,7 @@ const Welcome = () => {
                                 <img src="https://puu.sh/rh2Vo/79c66c00cc.png" alt=""/>
                                 <h5>Caleb A.</h5>
                                 <h6>Lead Engineer</h6>
-                                <p>Lorem ipsum some really quick, short description here.</p>
+                                <p>Full Stack engineer who loves frontend work.</p>
                             </li>
                             <li>
                                 <img src="https://puu.sh/rh3kR/1af6371d1f.png" alt=""/>

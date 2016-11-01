@@ -36,19 +36,19 @@ const Welcome = () => {
                                 <img src="https://puu.sh/rh3kR/1af6371d1f.png" alt=""/>
                                 <h5>David T.</h5>
                                 <h6>Lead Engineer</h6>
-                                <p>Lorem ipsum some really quick, short description here.</p>
+                                <p>I enjoy learning and building great feature/products!</p>
                             </li>
                             <li>
                                 <img src="https://puu.sh/rh3fB/9ddce5cdfa.png" alt=""/>
                                 <h5>Roni V.</h5>
                                 <h6>Lead Engineer</h6>
-                                <p>Lorem ipsum some really quick, short description here.</p>
+                                <p>To Be Added</p>
                             </li>
                             <li>
                                 <img src="https://puu.sh/rh3cN/569be9147a.png" alt=""/>
                                 <h5>Wes Y.</h5>
                                 <h6>Lead Engineer</h6>
-                                <p>Lorem ipsum some really quick, short description here.</p>
+                                <p>To Be Added</p>
                             </li>
                         </ul>
                     </div>
